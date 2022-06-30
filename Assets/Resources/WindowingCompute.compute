@@ -1,0 +1,64 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSWindowSample
+
+shared RWTexture2D<float4> outputTex;
+
+struct DicomPropertiesData
+{
+    int m_ImagePositionInList;
+    float ImageNumberRow;
+    float ImageNumberColumn;
+    int ManufacturerWindowWidth;
+    int ManufacturerWindowCenter;
+};
+
+struct DicomRawData
+{
+    int m_Raw16bitDataPoint;
+};
+
+RWStructuredBuffer<DicomPropertiesData> dicomPropertiesBuffer;
+RWStructuredBuffer<DicomRawData> dicomRawDataBuffer;
+
+//Variables to set from CPU
+float m_CurrentWindowWidth;
+float m_CurrentWindowCenter;
+int m_TextureWidth;
+float m_MaxColorValue;
+
+float WindowSample(uint3 id)
+{
+    int bufferPos = id.x + (id.y * m_TextureWidth);
+
+    int value = dicomRawDataBuffer[bufferPos].m_Raw16bitDataPoint;
+    float value1 = (float)value;
+
+    float minV = 0;
+    float maxV = m_MaxColorValue;
+
+    float WindowCenterMin05 = 0;
+    float WindowWidthMin1 = 0;
+
+    WindowCenterMin05 = m_CurrentWindowCenter - 0.5f;
+    WindowWidthMin1 = m_CurrentWindowWidth - 1;
+    
+    float OutputRange = m_MaxColorValue;
+    float MinimumOutputValue = 0;
+
+    float windowedResult = (float)min(maxV,
+        max(minV,
+            (((value1 - WindowCenterMin05) / WindowWidthMin1) + 0.5) * OutputRange + MinimumOutputValue));
+
+    return windowedResult;
+}
+
+[numthreads(16,16,1)]
+void CSWindowSample(uint3 id : SV_DispatchThreadID)
+{
+    float windowedResult = WindowSample(id);
+
+    if (windowedResult == 0 || windowedResult ==1)
+        outputTex[id.xy] = float4(0, 0, 0, 0);
+    else
+        outputTex[id.xy] = float4(windowedResult, windowedResult, windowedResult, 1);
+}

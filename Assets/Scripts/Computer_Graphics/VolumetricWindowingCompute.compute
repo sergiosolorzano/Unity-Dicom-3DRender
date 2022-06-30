@@ -1,0 +1,172 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSVolumetricWindowSample
+
+//static const int    MAX_ITERATIONS = 100;
+
+shared RWTexture3D<float4> m_Axial_3D_OutputRenderTexture;
+shared RWTexture3D<float4> m_Coronal_3D_OutputRenderTexture;
+shared RWTexture3D<float4> m_Sagittal_3D_OutputRenderTexture;
+
+RWStructuredBuffer<float4> m_AllColorData_CB;
+
+RWStructuredBuffer<int> m_AxialRaw16bitDataArray_CB;
+
+RWStructuredBuffer<int> m_CoronalRaw16bitDataArray_CB;
+
+RWStructuredBuffer<int> m_SagittalRaw16bitDataArray_CB;
+
+RWStructuredBuffer<float4> m_ReadRenderTex3DColorData_CB;
+
+//Variables to set from CPU
+float m_CurrentWindowWidth;
+float m_CurrentWindowCenter;
+float m_MaxColorValue;
+int m_ImageCols;
+int m_ImageRows;
+float4 m_ActiveStudyType;
+bool b_RenderTexture;
+
+float WindowSample(uint3 id, int m_StudyType)
+{
+    int value = 0;
+    int tempbufferPos = id.x + (id.y * m_ImageCols) + (id.z * m_ImageCols * m_ImageRows);
+
+    if (m_StudyType == 0)
+    {
+        value = m_AxialRaw16bitDataArray_CB[tempbufferPos];
+    }
+
+    else if (m_StudyType == 1)
+    {
+        value = m_CoronalRaw16bitDataArray_CB[tempbufferPos];
+    }
+
+    else if (m_StudyType == 2)
+    {
+        value = m_SagittalRaw16bitDataArray_CB[tempbufferPos];
+    }
+
+    float value1 = (float)value;
+
+    float minV = 0;
+    float maxV = m_MaxColorValue;
+
+    float WindowCenterMin05 = 0;
+    float WindowWidthMin1 = 0;
+
+    WindowCenterMin05 = m_CurrentWindowCenter - 0.5f;
+    WindowWidthMin1 = m_CurrentWindowWidth - 1;
+
+    float OutputRange = m_MaxColorValue;
+    float MinimumOutputValue = 0;
+
+    float windowedResult = (float)min(maxV,
+        max(minV,
+            (((value1 - WindowCenterMin05) / WindowWidthMin1) + 0.5) * OutputRange + MinimumOutputValue));
+
+    return windowedResult;
+}
+
+[numthreads(16, 16, 1)]
+void CSVolumetricWindowSample(uint3 id : SV_DispatchThreadID)
+{
+    int tempbufferPos = 0;
+    float windowedResult = 0;
+
+    int Axial = 0;
+    int Coronal = 1;
+    int Sagittal = 2;
+
+    if (m_ActiveStudyType[0] == 1)//1 = it is active
+    {
+        tempbufferPos = id.x + (id.y * m_ImageCols) + (id.z * m_ImageCols * m_ImageRows);
+
+        windowedResult = WindowSample(id, Axial);
+
+        if (windowedResult == 0 || windowedResult == 1)//pixel rgb result is 100% black(0) or 100% white(1)
+        {
+            m_AllColorData_CB[tempbufferPos] = float4(0, 0, 0, 0);
+            if(b_RenderTexture==true)
+                m_Axial_3D_OutputRenderTexture[id] = float4(0, 0, 0, 0);
+        }
+        else
+        {
+            m_AllColorData_CB[tempbufferPos] = float4(windowedResult, windowedResult, windowedResult, 1.0);
+            if (b_RenderTexture==true)
+                m_Axial_3D_OutputRenderTexture[id] = float4(windowedResult, windowedResult, windowedResult, 1.0);
+        }
+    }
+
+    if (m_ActiveStudyType[1] == 1)//1 = it is active
+    {
+        tempbufferPos = id.x + (id.y * m_ImageCols) + (id.z * m_ImageCols * m_ImageRows);
+
+        windowedResult = WindowSample(id, Coronal);
+
+        if (windowedResult == 0 || windowedResult == 1)
+        {
+            m_AllColorData_CB[tempbufferPos] = float4(0, 0, 0, 0);
+            if (b_RenderTexture)
+                m_Coronal_3D_OutputRenderTexture[id] = float4(0, 0, 0, 0);
+        }
+        else
+        {
+            m_AllColorData_CB[tempbufferPos] = float4(windowedResult, windowedResult, windowedResult, 1.0);
+            if (b_RenderTexture==true)
+                m_Coronal_3D_OutputRenderTexture[id] = float4(windowedResult, windowedResult, windowedResult, 1.0);
+        }
+    }
+
+    if (m_ActiveStudyType[2] == 1)//1 = it is active
+    {
+        tempbufferPos = id.x + (id.y * m_ImageCols) + (id.z * m_ImageCols * m_ImageRows);
+
+        windowedResult = WindowSample(id, Sagittal);
+
+        if (windowedResult == 0 || windowedResult == 1)
+        {
+            m_AllColorData_CB[tempbufferPos] = float4(0, 0, 0, 0);
+            if (b_RenderTexture)
+                m_Sagittal_3D_OutputRenderTexture[id] = float4(0, 0, 0, 0);
+        }
+        else
+        {
+            m_AllColorData_CB[tempbufferPos] = float4(windowedResult, windowedResult, windowedResult, 1.0);
+            if (b_RenderTexture)
+                m_Sagittal_3D_OutputRenderTexture[id] = float4(windowedResult, windowedResult, windowedResult, 1.0);
+        }
+    }
+
+    //read render texture
+    tempbufferPos = id.x + (id.y * m_ImageCols) + (id.z * m_ImageCols * m_ImageRows);
+
+    if (m_ActiveStudyType[0] == 1)//1 = it is active
+        m_ReadRenderTex3DColorData_CB[tempbufferPos] = m_Axial_3D_OutputRenderTexture[id];
+
+    if (m_ActiveStudyType[1] == 1)//1 = it is active
+        m_ReadRenderTex3DColorData_CB[tempbufferPos] = m_Coronal_3D_OutputRenderTexture[id];
+
+    if (m_ActiveStudyType[2] == 1)//1 = it is active
+        m_ReadRenderTex3DColorData_CB[tempbufferPos] = m_Sagittal_3D_OutputRenderTexture[id];
+}
+
+
+//RWStructuredBuffer<int> m_AxialPosStartImageIndex_CB;
+//RWStructuredBuffer<int> m_AxialImageNumberRow_CB;
+//RWStructuredBuffer<int> m_AxialImageNumberColumn_CB;
+//RWStructuredBuffer<int> m_AxialManufacturerWindowWidth_CB;
+//RWStructuredBuffer<int> m_AxialManufacturerWindowCenter_CB;
+//RWStructuredBuffer<int> m_CoronalPosStartImageIndex_CB;
+//RWStructuredBuffer<int> m_CoronalImageNumberRow_CB;
+//RWStructuredBuffer<int> m_CoronalImageNumberColumn_CB;
+//RWStructuredBuffer<int> m_CoronalManufacturerWindowWidth_CB;
+//RWStructuredBuffer<int> m_CoronalManufacturerWindowCenter_CB;
+//RWStructuredBuffer<int> m_SagittalPosStartImageIndex_CB;
+//RWStructuredBuffer<int> m_SagittalImageNumberRow_CB;
+//RWStructuredBuffer<int> m_SagittalImageNumberColumn_CB;
+//RWStructuredBuffer<int> m_SagittalManufacturerWindowWidth_CB;
+//RWStructuredBuffer<int> m_SagittalManufacturerWindowCenter_CB;
+
+
+//tempbufferPos = id.x + (id.y * m_AxialImageNumberColumn_CB[id.z]) + (id.z * m_AxialImageNumberColumn_CB[id.z] * m_AxialImageNumberRow_CB[id.z]);
+    //value = m_AxialRaw16bitDataArray_CB[tempbufferPos];
