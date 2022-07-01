@@ -109,12 +109,15 @@ namespace Rendergon.Dicom
 
         private void WindowWidthLevelChangeHandler(string m_StudyListType, List<DicomParameters> m_StudyDicomParametersList, DicomManager.WindowWidth_Level newWindowWidth_Level, Vector2 windowWidth_Center)
         {
-            if (m_DicomManagerScript.b_VolumetricRender && !m_DicomManagerScript.b_3D_RenderTexture && b_FirstMessageCompleted)
+            if (m_DicomManagerScript.b_VolumetricRender && !m_DicomManagerScript.b_3D_RenderTexture)
             {
-                Debug.LogWarning("Hounsfield windowding not built for volumetric render with 3D Textures (only with 3D Render Textures).");
-
-                if (!m_DicomManagerScript.b_3D_RenderTexture)
-                    Debug.LogWarning("Volumetric Render using 3DTextures.");
+                if(!b_FirstMessageCompleted)
+                {
+                    Debug.LogWarning("Hounsfield windowding not built for volumetric render with 3D Textures (only with 3D Render Textures).");
+                    
+                    if (!m_DicomManagerScript.b_3D_RenderTexture)
+                        Debug.LogWarning("Volumetric Render using 3DTextures.");
+                }
 
                 b_FirstMessageCompleted = true;
             }
@@ -401,21 +404,21 @@ namespace Rendergon.Dicom
 
             //float4[] tempArray = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
 
-            //if (m_DicomManagerScript.m_AxialStudyDicomParametersList.Count > 0)
-            //{
+            if (m_DicomManagerScript.m_AxialStudyDicomParametersList.Count > 0)
+            {
                 float4[] tempArray = m_AxialColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
                 m_ReadRenderTex3DColorData_CB.GetData(tempArray);
-            //}
+            }
 
             if (m_DicomManagerScript.m_CoronalStudyDicomParametersList.Count > 0)
             {
-                //float4[] tempArray = m_CoronalColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
+                float4[] tempArray = m_CoronalColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
                 m_ReadRenderTex3DColorData_CB.GetData(tempArray);
             }
 
             if (m_DicomManagerScript.m_SagittalStudyDicomParametersList.Count > 0)
             {
-                //float4[] tempArray = m_SagittalColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
+                float4[] tempArray = m_SagittalColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
                 m_ReadRenderTex3DColorData_CB.GetData(tempArray);
             }
 
