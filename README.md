@@ -8,7 +8,7 @@ Rendering scenarios tested for quad meshes (2D-plane equivalent images) and raym
 Each scene was not extended in full because this is a prototype and as such it was used determine the viability of the approach for our purposes. This project is therefore not supported.
 
 ## Project Software
-Unity version: Unity 2020.3.36f1
+Unity version: Unity 2020.3.36f1, Build Platform PC Standalone
 
 Dicom images data processed with the [Fellow Oak DICOM library](https://github.com/fo-dicom/fo-dicom)
 
