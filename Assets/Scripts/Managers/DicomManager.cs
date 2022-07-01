@@ -34,6 +34,12 @@ using Rendergon.Utilities;
 using UnityEditor;
 using UnityEngine.UI;
 
+/*Dicom images data processed with the Fellow Oak DICOM library (https://github.com/fo-dicom/fo-dicom) with its license https://github.com/fo-dicom/fo-dicom/blob/development/License.txt.
+The MIT License (MIT) 
+Copyright(c) Microsoft Corporation
+Permission is hereby granted, free of charge, to any person obtaining a copy  of this software and associated documentation files (the "Software"), to deal  in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  copies of the Software, and to permit persons to whom the Software is  furnished to do so, subject to the following conditions: */
+
 namespace Rendergon.Managers
 {
     public class DicomManager : MonoBehaviour
@@ -232,6 +238,7 @@ namespace Rendergon.Managers
             {
                 if(!b_3D_RenderTexture && !b_FirstMessageCompleted)
                 {
+                    Debug.LogWarning("Volumetric Render using 3D Texture.");
                     Debug.LogWarning("Hounsfield windowding not built for volumetric render with 3D Textures (only for 3D Render Textures).");
                 }
                 else if (!b_FirstMessageCompleted)

@@ -118,7 +118,7 @@ namespace Rendergon.Dicom
 
                 b_FirstMessageCompleted = true;
             }
-            else
+            else if (m_DicomManagerScript.b_VolumetricRender)
             {
                 if(!b_FirstMessageCompleted)
                 {
@@ -403,9 +403,8 @@ namespace Rendergon.Dicom
 
             //if (m_DicomManagerScript.m_AxialStudyDicomParametersList.Count > 0)
             //{
-            //float4[] tempArray = m_AxialColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
-            float4[] tempArray = m_AxialColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
-            m_ReadRenderTex3DColorData_CB.GetData(tempArray);
+                float4[] tempArray = m_AxialColorDataToRead_Array = new float4[m_3D_ColorTexturePropertiesStruct.m_SingleImageRaw16BitDataLen * m_3D_ColorTexturePropertiesStruct.m_ImageCount];
+                m_ReadRenderTex3DColorData_CB.GetData(tempArray);
             //}
 
             if (m_DicomManagerScript.m_CoronalStudyDicomParametersList.Count > 0)
@@ -564,8 +563,8 @@ namespace Rendergon.Dicom
                 m_VolumetricComputeShader.SetVector("m_ActiveStudyType", m_3D_ColorTexturePropertiesStruct.m_ActiveStudyType);
                 m_VolumetricComputeShader.SetBool("b_RenderTexture", m_DicomManagerScript.b_3D_RenderTexture);
             }
-            
-            if(cubeRenderer!=null)
+
+            if (cubeRenderer!=null)
             {
                 if(m_DicomManagerScript.b_3D_RenderTexture)
                 {

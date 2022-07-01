@@ -103,32 +103,32 @@ float sample_volume(float3 uv, float3 p)
     float max = step(axis.x, _SliceMax.x) * step(axis.y, _SliceMax.y) * step(axis.z, _SliceMax.z);
 
     float axisResult = v * min * max;
-    return axisResult;*/
+    //return axisResult;
     
     //Coronal
-    /*uv = mul(uv - 0.5, AngleAxis3x3(_CoronalAngle, float3(1, 0, 0))) + 0.5;
+    uv = mul(uv - 0.5, AngleAxis3x3(_CoronalAngle, float3(1, 0, 0))) + 0.5;
     //uv *= _Scale;
     float v2 = tex3D(_CoronalMainTex, uv).r * _Intensity;
 
-    float3 axis = mul(_AxisRotationMatrix, float4(p, 0)).xyz;
+    axis = mul(_AxisRotationMatrix, float4(p, 0)).xyz;
     axis = get_uv(axis);
-    float min = step(_SliceMin.x, axis.x) * step(_SliceMin.y, axis.y) * step(_SliceMin.z, axis.z);
-    float max = step(axis.x, _SliceMax.x) * step(axis.y, _SliceMax.y) * step(axis.z, _SliceMax.z);
+    min = step(_SliceMin.x, axis.x) * step(_SliceMin.y, axis.y) * step(_SliceMin.z, axis.z);
+    max = step(axis.x, _SliceMax.x) * step(axis.y, _SliceMax.y) * step(axis.z, _SliceMax.z);
 
-    float coronalResult = v2 * min * max;
-    return coronalResult;
+    float coronalResult = v2 * min * max + axisResult;
+    //return coronalResult;
 
     //Coronal
     uv = mul(uv - 0.5, AngleAxis3x3(_CoronalAngle, float3(1, 0, 0))) + 0.5;
     //uv *= _Scale;
     float v3 = tex3D(_SagittalMainTex, uv).r * _Intensity;
 
-    float3 axis = mul(_AxisRotationMatrix, float4(p, 0)).xyz;
+    axis = mul(_AxisRotationMatrix, float4(p, 0)).xyz;
     axis = get_uv(axis);
-    float min = step(_SliceMin.x, axis.x) * step(_SliceMin.y, axis.y) * step(_SliceMin.z, axis.z);
-    float max = step(axis.x, _SliceMax.x) * step(axis.y, _SliceMax.y) * step(axis.z, _SliceMax.z);
+    min = step(_SliceMin.x, axis.x) * step(_SliceMin.y, axis.y) * step(_SliceMin.z, axis.z);
+    max = step(axis.x, _SliceMax.x) * step(axis.y, _SliceMax.y) * step(axis.z, _SliceMax.z);
 
-    float sagittalResult = v3 * min * max;
+    float sagittalResult = v3 * min * max + coronalResult;
     return sagittalResult;*/
 
     uv = mul(uv - 0.5, AngleAxis3x3(_CoronalAngle, float3(1, 0, 0))) + 0.5;
