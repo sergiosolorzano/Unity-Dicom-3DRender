@@ -7,14 +7,14 @@ Rendering scenarios tested for quad meshes (2D-plane equivalent images) and raym
 
 Each scene was not extended in full because this is a prototype and as such it was used determine the viability of the approach for our purposes. This project is therefore not supported.
 
+Project collaborator and donator of dicom images: [TBD]. Project currently has no dicom images, we are awaiting for these to be anonymized and will be uploaded soon.
+
 ## Project Software
 Unity version: Unity 2020.3.36f1, Build Platform PC Standalone
 
 Dicom images data processed with the [Fellow Oak DICOM library](https://github.com/fo-dicom/fo-dicom)
 
 This [library's](https://github.com/fo-dicom/fo-dicom) license: The MIT License (MIT), Copyright (c) Microsoft Corporation: Permission is hereby granted, free of charge, to any person obtaining a copy  of this software and associated documentation files (the "Software"), to deal  in the Software without restriction, including without limitation the rights  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  copies of the Software, and to permit persons to whom the Software is  furnished to do so, subject to the [following conditions](https://github.com/fo-dicom/fo-dicom/blob/development/License.txt).
-
-Project collaborator and donator of dicom images: [TBD]. **Project currently has no dicom images, we are awaiting for these to be anonymized and will be uploaded soon.**
 
 ## License
 This project is licensed under the MIT License. See [LICENSE.txt](https://github.com/sergiosolorzano/Dicom-3DRender/blob/main/LICENSE.md) for more information.
