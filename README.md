@@ -48,6 +48,6 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
   
       <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
       
-      <a href="https://www.buymeacoffee.com/sergiosolorzano" target="blank"><img src="https://github.com/sergiosolorzano/Unity-Dicom-3DRender/assets/24430655/1fcf54e0-1947-4ad5-ad58-917130f656d0" width="110" height="31"></a>
+      <a href="https://www.buymeacoffee.com/sergiosolorzano" target="blank"><img src="https://github.com/sergiosolorzano/Unity-Dicom-3DRender/assets/24430655/1fcf54e0-1947-4ad5-ad58-917130f656d0" width="110" height="31"></img></a>
 
 
