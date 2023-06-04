@@ -48,4 +48,4 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
   
       <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
   
-  
+  [![](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)]([url-for-the-link](https://www.buymeacoffee.com/sergiosolorzano))
