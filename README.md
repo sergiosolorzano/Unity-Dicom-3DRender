@@ -47,8 +47,8 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
       <video src="https://user-images.githubusercontent.com/24430655/176882412-39a4156d-2e70-451a-b6c3-ac033135e69a.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
   
       <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
-      
-<a target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/sergiosolorzano"><img src="https://github.com/sergiosolorzano/Unity-Dicom-3DRender/assets/24430655/d03e5439-c18a-461a-ba06-13584a9417f7" alt="Buy Me A Coffee" height="41" width="145" style="max-width: 100%;"></a>
+
+<a rel="noopener noreferrer" href="https://www.buymeacoffee.com/sergiosolorzano"><img src="https://github.com/sergiosolorzano/Unity-Dicom-3DRender/assets/24430655/d03e5439-c18a-461a-ba06-13584a9417f7" alt="Buy Me A Coffee" height="41" width="145" style="max-width: 100%;"></a>
 
 
 
