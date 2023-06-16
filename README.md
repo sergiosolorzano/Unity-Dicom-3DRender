@@ -37,7 +37,8 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
       
     + VolumetricRender_3DTexture.unity: Raymarching volumetric cloud render using 3D Textures with Slicing functionality. Hounsfield units cannot be re-adjusted. Single study axis (axial, coronal, sagittal) at once.
   
-      <video src="https://user-images.githubusercontent.com/24430655/176886772-4135dc33-e270-4643-8c2f-4b942009eaee.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
+      <video src="https://user-images.githubusercontent.com/24430655/176886772-4135dc33-e270-4643-8c2f-4b942009eaee.mp4" controls="controls" muted="muted" playsinline="playsinline">
+      </video>
 
     + QuadMesh_CPU-RGBA_Range_Picker.unity: 3D model renders on multiple quad meshes according to the RGBA (0-255) unit range selected by the user. Multiple study axis (axial, coronal, sagittal) may be rendered at once and aligned.
 
@@ -46,6 +47,8 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
       
     + QuadMesh_GPU_CB_Windowing.unity: Quad meshes: 3D model renders on multiple quad meshes according to the Hounsfield unit set on a Window width and Window Center selected by the user. Multiple study axis (axial, coronal, sagittal) may be rendered at once and aligned.
   
-      <video src="https://user-images.githubusercontent.com/24430655/176882412-39a4156d-2e70-451a-b6c3-ac033135e69a.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
+      <video src="https://user-images.githubusercontent.com/24430655/176882412-39a4156d-2e70-451a-b6c3-ac033135e69a.mp4" controls="controls" muted="muted" playsinline="playsinline">
+      </video>
   
-      <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
+      <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline">
+      </video>
