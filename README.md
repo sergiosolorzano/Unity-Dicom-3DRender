@@ -30,10 +30,11 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
   
   * Render Scenes (Scenes found in unity project folder ..\Assets\Scenes\):
   
-    + VolumetricRender_3DRenderTexture.unity: Raymarching volumetric cloud render using 3D Render Textures with Slicing functionality. Hounsfield units set according to Window width and Window Center selected by the user. Single study axis (axial, coronal, sagittal) at once.
-
-      <video src="https://user-images.githubusercontent.com/24430655/176890215-a7bb0a66-8046-4785-87d0-34494c17385b.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
+    + VolumetricRender_3DRenderTexture.unity: Raymarching volumetric cloud render using 3D Render Textures with Slicing functionality. Hounsfield units set according to Window width and Window Center selected by the user. Single study axis (axial, coronal, sagittal) at once.      
       
+https://github.com/sergiosolorzano/Unity-Dicom-3DRender/assets/24430655/ed41510f-d241-46f3-b75e-7c8d7c2e9109
+
+
     + VolumetricRender_3DTexture.unity: Raymarching volumetric cloud render using 3D Textures with Slicing functionality. Hounsfield units cannot be re-adjusted. Single study axis (axial, coronal, sagittal) at once.
   
       <video src="https://user-images.githubusercontent.com/24430655/176886772-4135dc33-e270-4643-8c2f-4b942009eaee.mp4" controls="controls" muted="muted" playsinline="playsinline"></video>
