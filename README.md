@@ -52,3 +52,9 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
   
       <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline">
       </video>
+
+
+    <a href="https://www.buymeacoffee.com/sergiosolorzano" rel="nofollow">
+          <img src="https://camo.githubusercontent.com/3ba8042b343d12b84b85d2e6563376af4150f9cd09e72428349c1656083c8b5a/68747470733a2f2f63646e2e6275796d6561636f666665652e636f6d2f627574746f6e732f64656661756c742d6f72616e67652e706e67" alt="Buy Me A Coffee" height="41" width="145" data-canonical-src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" style="max-width: 100%;">
+          </a>
+      
