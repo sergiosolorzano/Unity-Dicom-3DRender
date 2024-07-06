@@ -7,7 +7,7 @@ Rendering scenarios tested for quad meshes (2D-plane equivalent images) and raym
 
 Each prototype scene was not extended in full because these are a proof of concept and used determine the viability of the approach for our purposes. There is no further support for this repo.
 
-Project collaborator and donor of dicom images: [TBD]. The project currently has no dicom images, we are awaiting for these to be anonymized and will be uploaded soon.
+Project collaborator and donor of dicom images: Centre de Diagnosi per la Imatge de Tarragona. The project currently has no dicom images, we are awaiting for these to be anonymized and will be uploaded soon.
 
 ## Project Software
 Unity version: Unity 2020.3.36f1, Build Platform PC Standalone.
