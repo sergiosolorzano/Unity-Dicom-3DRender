@@ -9,6 +9,12 @@ Each prototype scene was not extended in full because these are a proof of conce
 
 Project collaborator and donor of dicom images: Centre de Diagnosi per la Imatge de Tarragona. The project currently has no dicom images, unfortunately the images were never further anonymized for github distribution.
 
+<p align="center">
+<img width="150" alt="star" src="https://github.com/sergiosolorzano/ai_gallery/assets/24430655/3c0b02ea-9b11-401a-b6f5-c61b69ad651b">
+</p>
+
+---------------------------------------------
+
 ## Project Software
 Unity version: Unity 2020.3.36f1, Build Platform PC Standalone.
 
