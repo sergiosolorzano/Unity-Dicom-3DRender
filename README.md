@@ -59,7 +59,10 @@ This project is licensed under the MIT License. See [LICENSE.txt](https://github
       <video src="https://user-images.githubusercontent.com/24430655/178246241-c15854c9-c0c2-46b1-86a3-4885c7c21dad.mp4" controls="controls" muted="muted" playsinline="playsinline">
       </video>
 
-      If you find this helpful you can buy me a coffee :)
-   
-      <a href="https://www.buymeacoffee.com/sergiosolorzano" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-      
+  ## Star History
+  [![Star History Chart](https://api.star-history.com/svg?repos=sergiosolorzano/Unity-Dicom-3DRender&type=Date)](https://www.star-history.com/#sergiosolorzano/Unity-Dicom-3DRender&Date)
+
+  If you find this helpful you can buy me a coffee :)
+
+  <a href="https://www.buymeacoffee.com/sergiosolorzano" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+  
